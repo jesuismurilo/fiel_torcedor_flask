@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fiel Torcedor{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; background-color: #f8f9fa; }
+        .bg-custom-red { background-color: #d9304f !important; }
+        .main-content { flex: 1; }
+        footer { background-color: #d9304f; color: white; text-align: center; padding: 8px 0; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom-red px-3">
+        <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">Administração</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Usuários</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('listar_usuarios') }}">Listagem de Usuários</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('cadastrar_usuario') }}">Cadastro de Usuários</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Planos Sócio</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('listar_planos') }}">Listagem de Planos</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('cadastrar_plano') }}">Cadastro de Planos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Ingressos</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('listar_ingressos') }}">Listagem de Ingressos</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('cadastrar_ingresso') }}">Cadastro de Ingressos</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex gap-2" role="search">
+                <input class="form-control form-control-sm" type="search" placeholder="Procurar">
+                <a href="{{ url_for('login') }}" class="btn btn-dark btn-sm fw-bold">SAIR</a>
+            </form>
+        </div>
+    </nav>
+
+    <main class="container my-4 main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        Projeto desenvolvido por: Murilo Silva de Jesus
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
